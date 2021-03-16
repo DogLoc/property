@@ -16,17 +16,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-
-        User::withoutEvents(function () {
-            for ($i = 0; $i<15; $i++) {
-                User::factory()->create();
-            }
-        });
-
-        Property::withoutEvents(function () {
-            for ($i = 0; $i<10; $i++) {
-                Property::factory()->create();
-            }
-        });
+        $this->call(UsersTableSeeder::class);
+        $this->call(PropertyTableSeeder::class);
     }
 }

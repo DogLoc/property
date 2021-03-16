@@ -22,8 +22,8 @@ class CreatePropertiesTable extends Migration
          $table->bigInteger('price');
          $table->text('city');
          $table->text('country');
-         $table->text('longitude');
-         $table->text('latitude');
+         $table->text('longitude')->nullable();;
+         $table->text('latitude')->nullable();;
          $table->integer('room');
          $table->integer('size');
          $table->string('image')->nullable();

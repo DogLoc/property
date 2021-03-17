@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import Main from "./Main";
+import Main from "../Main";
 import { BrowserRouter, Route, Link } from "react-router-dom";
-import Router from "./Router";
+import Routes from "../conf/Routes";
+import {Card} from "../elements/Properties";
 
 class Navbar extends Component{
 
@@ -30,7 +31,7 @@ class Navbar extends Component{
                                     <a className="nav-link" href="#">Features</a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" href="#">Pricing</a>
+                                    <a className="nav-link" href="#">Features</a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link disabled" href="#">Disabled</a>

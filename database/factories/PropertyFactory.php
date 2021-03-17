@@ -33,7 +33,7 @@ class PropertyFactory extends Factory
             'latitude' => $faker->latitude,
             'room' => $faker->numberBetween(1,10),
             'size' => $faker->numberBetween(50,5000),
-            'image' => $faker->image(),
+            'image' => $faker->imageUrl(),
             'availability' => $faker->boolean(),
             'user_id' => $faker->numberBetween(1,15)
         ];

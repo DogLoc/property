@@ -1,53 +1,52 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import Property from "./Property";
+import Properties from "./Properties";
 
-/* Main Component */
 class Main extends Component {
 
     constructor() {
 
         super();
-        //Initialize the state in the constructor
         this.state = {
             properties: [],
+            currentProperty: null
         }
+
     }
-    /*componentDidMount() is a lifecycle method
-     * that gets called after the component is rendered
-     */
+
     componentDidMount() {
-        /* fetch API in action */
-        fetch('/api/properties?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYxNTg1NzIzMywiZXhwIjoxNjE1ODYwODMzLCJuYmYiOjE2MTU4NTcyMzMsImp0aSI6Ikx3RWhUUEF4THhrdTNzV2MiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.h9bECc-p1dIr5lkd5gK0_VbqtutAFHj9fUPXsnlKdpY')
+        fetch('/api/properties?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYxNTk0Mzk1NywiZXhwIjoxNjE1OTQ3NTU3LCJuYmYiOjE2MTU5NDM5NTcsImp0aSI6ImlYZ3hBclF3UTBGUVJpdU8iLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.L5HS9pxRvS6JYmoQOBwbQMCDTv5Kkni2BaULCg4cOVU')
             .then(response => {
                 return response.json();
             })
             .then(properties => {
-                //Fetched product is stored in the state
                 this.setState({ properties });
             });
     }
 
     renderProperties() {
+
         return this.state.properties.map(property => {
             return (
-                /* When using list you need to specify a key
-                 * attribute that is unique for each list item
-                */
-                <li key={property.id} >
-                    { property.title }
-                </li>
+                <Properties key={property.id} eventProps={ () => this.handleClick(property)}   property={property}></Properties>
             );
         })
     }
 
+
+    handleClick(property) {
+        this.setState({currentProperty:property});
+    }
+
     render() {
-        /* Some css code has been removed for brevity */
         return (
-            <div>
-                <ul>
-                    { this.renderProperties() }
-                </ul>
+
+            <div className="container-fluid houseContainer ">
+                { this.renderProperties() }
+                <Property property={this.state.currentProperty} />
             </div>
+
 
         );
     }

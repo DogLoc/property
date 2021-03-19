@@ -5,36 +5,34 @@ class Property extends Component {
     constructor() {
         super();
         this.state = {
-            property : ""
+            property: ""
         }
     }
 
     componentDidMount() {
-        const { match: { params } } = this.props;
+        let { match: { params } } = this.props;
 
-
-
-        fetch(`/api/properties/${params.id}/?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYxNjAxNzEzNSwiZXhwIjoxNjE2MDMxNTM1LCJuYmYiOjE2MTYwMTcxMzUsImp0aSI6ImVFU0dIc2VVcktETEpXS3giLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.vAIyE3VALg-Q2oY4QlE0Wg162RxnP3n9TGNd7YHnG5c`)
+        fetch(`/api/properties/${params.id}/?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwOlwvXC9sb2NhbGhvc3Q6ODAwMFwvYXBpXC9hdXRoXC9sb2dpbiIsImlhdCI6MTYxNjEwMDU0OSwiZXhwIjoxNjE2MTE0OTQ5LCJuYmYiOjE2MTYxMDA1NDksImp0aSI6Imh3SnBFRUxGNGFaaFhGRDEiLCJzdWIiOjEsInBydiI6IjIzYmQ1Yzg5NDlmNjAwYWRiMzllNzAxYzQwMDg3MmRiN2E1OTc2ZjcifQ.lJXi2UeHiPwg7Y1Qo5rsOojK-0fXwUknikOr2Qry6iw`)
             .then(response => {
                 return response.json();
             })
-            .then(property => {
-                this.setState({ property });
-                console.log(property);
+            .then(CurProperty => {
+                this.setState({ property: CurProperty.data });
             });
     }
 
+
     render() {
-            return (
 
-                <div>
-                    <h2> {this.state.property.id} </h2>
-                    <h2> {this.state.property.title} </h2>
-                    <h3> Status {this.state.property.availability ? 'Available' : 'Vendu!'} </h3>
-                    <h3> Price : {this.state.property.price} </h3>
-                </div>
-
-            );
+        return (
+            <div>
+                <h2> {this.state.property.title} </h2>
+                <p> Status {this.state.property.availability ? 'Available' : 'Vendu!'} </p>
+                <p> Price : {this.state.property.price} </p>
+                <p> Size : {this.state.property.size} m²</p>
+                <p> Room : {this.state.property.room}</p>
+            </div>
+        );
     }
 }
 export default Property;

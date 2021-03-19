@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import Main from "../Main";
 import Property from "../elements/Property";
 
@@ -10,14 +10,14 @@ class Routes extends Component {
     }
 
     render() {
-            return (
-                <div>
-                    <Route  path="/properties" component={Main} />
-                    <Route  path="property/:id" component={Property} />
-                    <Route path="/topic" component={Property} />
-                </div>
-            )
+        return (
+
+            <Switch>
+                <Route path="/properties" component={Main} />
+                <Route exact path="/property/:id">dqdqzdqzd</Route> 
+                <Route path="/topic" component={Property} />
+            </Switch>
+        )
     }
 }
 export default Routes;
-

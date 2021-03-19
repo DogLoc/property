@@ -19,7 +19,6 @@ class Main extends Component {
                 <Properties></Properties>
             </div>
 
-
         );
     }
 }

@@ -2,17 +2,18 @@ import { BrowserRouter, Route, IndexRoute } from "react-router-dom";
 
 require('./bootstrap');
 import React, { Component } from 'react';
+import { Redirect } from "react-router-dom";
 import ReactDOM from 'react-dom';
-import Main from './components/Main';
-import Navbar from './components/head/Navbar';
+import Header from './components/head/Header';
+import Welcome from './components/elements/Welcome';
 import Routes from "./components/conf/Routes";
 
 class App extends React.Component {
     render() {
         return (
             <div>
-                <Navbar></Navbar>
-                <Main></Main>
+                <Header/>
+                <Redirect to={`/welcome`} />
                 <Routes />
             </div>
         );

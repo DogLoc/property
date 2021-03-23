@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import Main from "../Main";
-import { BrowserRouter, Route, Link } from "react-router-dom";
-import Routes from "../conf/Routes";
 import { Card } from "../elements/Properties";
 
-class Navbar extends Component {
+class Header extends Component {
 
     constructor() {
 
@@ -52,4 +49,4 @@ class Navbar extends Component {
 }
 
 
-export default Navbar;
+export default Header;
